@@ -1,0 +1,33 @@
+﻿@model List<SimpleSchoolSystem.ServicesLayer.Dto.Identity.ManageUserInRoleModel>
+@{
+    var roleid = ViewBag.RoleId;
+}
+<form method="post" asp-route-roleId="@roleid">
+    <div class=" card">
+        <div class=" card-header">
+            <h2>update </h2>
+        </div>
+        <div class="card-body">
+            
+            @for (int i=0; i< Model.Count();i++)
+            {
+                <div class="form-check">
+                    <input type="hidden" asp-for="@Model[i].UserId" class="from-check-input"/>
+                    <input type="hidden" asp-for="@Model[i].UserName" class="from-check-input"/>
+                    <input asp-for="@Model[i].IsSelected" class="from-check-input" />
+                    <label asp-for="@Model[i].IsSelected" class="from-check-input">
+                        @Model[i].UserName
+                    </label>
+                </div>
+
+            }
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+       
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Done" class="btn btn-outline-secondary" />
+    </div>
+    </div>
+</form>
+

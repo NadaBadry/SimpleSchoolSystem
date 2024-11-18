@@ -1,0 +1,54 @@
+﻿@model IEnumerable<SimpleSchoolSystem.Models.Student>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-outline-secondary">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentId)
+            </th> 
+            <th>
+                @Html.DisplayNameFor(model => model.StudentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.departmentId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.departmentId)
+            </td>
+            <td>
+                    <a class="btn btn-outline-secondary" asp-action="Edit" asp-route-id="@item.StudentId">Edit</a> |
+                    <a class="btn btn-outline-secondary" asp-action="Details" asp-route-id="@item.StudentId">Details</a> |
+                    <a class="btn btn-outline-secondary" asp-action="Delete" asp-route-id="@item.StudentId">Delete</a>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
